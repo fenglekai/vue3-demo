@@ -1,0 +1,25 @@
+{
+  "name": "vue3-vite-demo",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@antv/l7": "^2.5.58",
+    "@antv/l7-maps": "^2.5.58",
+    "animate.css": "^4.1.1",
+    "axios": "^0.24.0",
+    "echarts": "^5.2.2",
+    "element-plus": "^1.2.0-beta.3",
+    "sass": "^1.43.4",
+    "typescript": "^4.5.2",
+    "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.11",
+    "@vitejs/plugin-vue": "^1.9.3",
+    "vite": "^2.6.4"
+  }
+}
