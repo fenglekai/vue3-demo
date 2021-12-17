@@ -3,7 +3,7 @@
     "esModuleInterop": true,
     "allowJs": true,
     "compilerOptions": {
-        "module": "es2020", // 解决import.meta报错
+        "module": "esnext", // 解决import.meta报错
         "moduleResolution": "node", // 解决node引用报错
         "types": ["vite/client"], // 解决import.meta.globEager报错
         "baseUrl": ".",

@@ -118,9 +118,9 @@
 </template>
 
 <script lang="ts">
-import { onMounted, onUnmounted, reactive, toRefs, ref } from "vue";
-import { ElMessage } from "element-plus";
-import request from "@/utils/request";
+import { onMounted, onUnmounted, reactive, toRefs, ref } from 'vue'
+import { ElMessage } from 'element-plus'
+import request from '@/utils/request'
 // 之前的建立上下文方式
 // const path = require("path");
 // const files = require.context("@/components/context", false, /\.vue$/);
@@ -133,126 +133,122 @@ import request from "@/utils/request";
 // const files = import.meta.globEager("/src/components/*.vue");
 // const files = import.meta.globEager("/src/static/**");
 export default {
-  name: "Home",
+  name: 'Home',
   setup(props: any, context: any) {
     const state = reactive({
       hitokoto: {
-        hitokoto: "",
-        from: "",
-        from_who: "",
+        hitokoto: '',
+        from: '',
+        from_who: '',
       },
       waiting: false,
       isHome: true,
-      animateSrc: "/src/static/circleMenuAnimation/index.html",
-      inputValue: "",
-    });
-    const menuImg = ref(null);
-    const menuList = ref(null);
-    const restaurants = ref([]);
+      animateSrc: '/src/static/circleMenuAnimation/index.html',
+      inputValue: '',
+    })
+    const menuImg = ref(null)
+    const menuList = ref(null)
+    const restaurants = ref([])
     // 搜索
     function searchClick() {
       if (
-        document.querySelector(".input-3").className.indexOf("inclicked") == -1
+        document.querySelector('.input-3').className.indexOf('inclicked') == -1
       ) {
-        document.querySelector(".input-3").className = "input-3 inclicked";
-        document.querySelector(".input3-btn").className = "input3-btn close";
+        document.querySelector('.input-3').className = 'input-3 inclicked'
+        document.querySelector('.input3-btn').className = 'input3-btn close'
       } else {
-        document.querySelector(".input-3").className = "input-3";
-        document.querySelector(".input3-btn").className = "input3-btn";
+        document.querySelector('.input-3').className = 'input-3'
+        document.querySelector('.input3-btn').className = 'input3-btn'
       }
     }
     // 搜索提示
     const querySearch = (queryString: string, cb) => {
       const results = queryString
         ? restaurants.value.filter(createFilter(queryString))
-        : restaurants.value;
+        : restaurants.value
       // call callback function to return suggestions
-      cb(results);
-    };
+      cb(results)
+    }
     const createFilter = (queryString) => {
       return (restaurant) => {
         return (
           restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) ===
           0
-        );
-      };
-    };
+        )
+      }
+    }
     const loadAll = () => {
-      const temp = [...menuList.value.children];
+      const temp = [...menuList.value.children]
       const menuData = temp.map((item) => {
         return {
           value: item.innerText,
-        };
-      });
-      return menuData;
-    };
+        }
+      })
+      return menuData
+    }
     const handleSelect = (item) => {
-      openMenu("search");
-      state.animateSrc = `/src/static/${item.value}/index.html`;
-    };
+      openMenu('search')
+      state.animateSrc = `/src/static/${item.value}/index.html`
+    }
     const searchEnter = (e) => {
       console.log(e)
-    };
+    }
     // 获取一言接口
     const getHitokoto = async () => {
       if (state.waiting)
-        return ElMessage.info("请细细品味这句话~（等10秒后再试试）");
-      state.waiting = true;
+        return ElMessage.info('请细细品味这句话~（等10秒后再试试）')
+      state.waiting = true
       await request({
-        url: "https://v1.hitokoto.cn/?c=d&c=e&c=h&c=i&c=j&c=k",
-        method: "get",
+        url: 'https://v1.hitokoto.cn/?c=d&c=e&c=h&c=i&c=j&c=k',
+        method: 'get',
+        headers: {
+          'content-type': 'application/json',
+        },
       })
         .then((res: any) => {
-          state.hitokoto = res;
+          state.hitokoto = res
         })
         .catch((err) => {
-          ElMessage.info("没有换句成功喔，你是不是没仔细看");
-          console.log(err);
-        });
-      state.waiting = false;
-    };
+          ElMessage.info('没有换句成功喔，你是不是没仔细看')
+          console.log(err)
+        })
+      state.waiting = false
+    }
     // 打开菜单
     function openMenu(arg: any) {
       if (typeof arg === 'string') {
-        state.isHome = false;
+        state.isHome = false
       } else {
-        state.isHome = !state.isHome;
+        state.isHome = !state.isHome
       }
       if (!state.isHome) {
-        menuImg.value.style.top = "5%";
-        menuList.value.style.top = "8%";
-        menuList.value.style.height = "auto";
+        menuImg.value.style.top = '5%'
+        menuList.value.style.top = '8%'
+        menuList.value.style.height = 'auto'
       } else {
-        menuImg.value.style.top = null;
-        menuList.value.style.top = null;
-        menuList.value.style.height = "0px";
+        menuImg.value.style.top = null
+        menuList.value.style.top = null
+        menuList.value.style.height = '0px'
       }
     }
     // 选择动画
     const choiceAnimate = (e) => {
-      state.animateSrc = `/src/static/${e.target.innerText}/index.html`;
-    };
+      state.animateSrc = `/src/static/${e.target.innerText}/index.html`
+    }
     // 页面挂载完成
     onMounted(() => {
-      document.querySelector(".input3-btn").addEventListener("click", () => {
-        searchClick();
-      });
-      getHitokoto();
-      restaurants.value = loadAll();
-      // window.onload = () => {
-      //   document.onkeyup = (ev) => {
-      //     if(ev.key === 'Enter') {
-      //       console.log(ev);
-      //     }
-      //   }
-      // }
-    });
+      document.querySelector('.input3-btn').addEventListener('click', () => {
+        searchClick()
+      })
+      getHitokoto()
+      restaurants.value = loadAll()
+    })
     // 页面卸载完成
     onUnmounted(() => {
-      document.querySelector(".input3-btn").removeEventListener("click", () => {
-        searchClick();
-      });
-    });
+      document.querySelector('.input3-btn').removeEventListener('click', () => {
+        searchClick()
+      })
+    })
     return {
       searchClick,
       restaurants,
@@ -266,9 +262,9 @@ export default {
       ...toRefs(state),
       menuImg,
       menuList,
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -281,7 +277,6 @@ $color-green: #8aff8e;
   .menu-img {
     position: relative;
     top: 50%;
-    // transform: translateY(-50%);
     cursor: pointer;
     transition: 0.3s;
   }
@@ -401,9 +396,9 @@ $color-green: #8aff8e;
 </style>
 
 <style lang="scss" scoped>
-@import "@/styles/input.css";
-@import "@/styles/text.css";
-@import "@/styles/hover.min.css";
+@import '@/styles/input.css';
+@import '@/styles/text.css';
+@import '@/styles/hover.min.css';
 .search-box {
   height: 100%;
   line-height: 15px;
