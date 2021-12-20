@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import Home from './components/Home.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import Home from "./components/Home.vue";
 </script>
 
 <template>
@@ -12,8 +13,8 @@ import Home from './components/Home.vue'
 body {
   margin: 0;
   min-width: 1440px;
-  /* 滚动条不占宽度 */
-  overflow: overlay;
+  overflow-x: overlay;
+  overflow-y: hidden;
 }
 p {
   margin-block-start: 0em;
@@ -42,10 +43,10 @@ p {
  内阴影+圆角*/
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(138, 255, 142, 0.7);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(138, 255, 142, 1);
 }
 /* 定义滚动条x和y交汇部分 */
 ::-webkit-scrollbar-corner {
