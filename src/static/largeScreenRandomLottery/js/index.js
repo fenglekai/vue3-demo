@@ -16,7 +16,7 @@ var app = new Vue({
     checkAll: false,
     isIndeterminate: false,
     btnVisible: true,
-    resultVisible: false
+    tabsActive: 'first'
   },
   mounted() {
     this.onKeyDown();
@@ -24,13 +24,17 @@ var app = new Vue({
   methods: {
     onKeyDown() {
       document.onkeydown = e => {
-        e.preventDefault();
-        if (this.nums.length >= this.maxNum - this.minNum + 1) {
-          window.alert("号码已经全部抽取，无法再次抽取");
-          return;
-        }
+        // e.preventDefault();
+        console.log(this.minNum);
+        console.log(this.maxNum);
+        console.log(this.visible);
+        if (this.visible) return
         var keyNum = window.event ? e.keyCode : e.which;
-        if (keyNum === 32) {
+        if (keyNum === 32 || keyNum === 13) {
+          if (this.nums.length >= this.maxNum - this.minNum + 1) {
+            window.alert("号码已经全部抽取，无法再次抽取");
+            return;
+          }
           if (this.isStart) {
             this.stop();
             this.isStart = false;
@@ -67,7 +71,10 @@ var app = new Vue({
         this.setNum();
         this.noRepeat();
       } else {
-        this.nums.push({ num: this.num, time: this.formatDateTime() });
+        this.nums.push({
+          num: this.num,
+          time: this.formatDateTime()
+        });
         window.localStorage.setItem("nums", JSON.stringify(this.nums));
       }
     },
@@ -107,6 +114,20 @@ var app = new Vue({
     clearData() {
       this.checkAll = false;
       this.handleCheckAllChange();
+    },
+    minNumChange(currentValue) {
+      if (this.minNum > this.maxNum) {
+        return alert('最小数字不能大于最大数字')
+      }
+      this.minNum = currentValue;
+      this.nums = [];
+    },
+    maxNumChange(currentValue) {
+      if (this.minNum > this.maxNum) {
+        return alert('最小数字不能大于最大数字')
+      }
+      this.maxNum = currentValue;
+      this.nums = [];
     }
   }
 });
