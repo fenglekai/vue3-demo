@@ -86,8 +86,8 @@
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   <div id="app">
     <div id="result" ref="result">{{num}}</div>
-    <div class="suspend" @click="visible = true">功能</div>
-    <el-dialog title="功能" :visible.sync="visible" @close="clearData">
+    <div class="suspend" @click="visible = true">菜单</div>
+    <el-dialog title="菜单" :visible.sync="visible" @close="clearData">
       <el-tabs v-model="tabsActive">
         <!-- 设置抽奖范围 -->
         <el-tab-pane label="设置抽奖范围" name="first" style="text-align: center;">
