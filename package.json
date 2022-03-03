@@ -7,17 +7,31 @@
     "serve": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "animate.css": "^4.1.1",
     "axios": "^0.24.0",
     "element-plus": "^1.2.0-beta.3",
     "sass": "^1.43.4",
     "vue": "^3.2.16",
     "vue-router": "^4.0.12"
+=======
+    "@vitejs/plugin-legacy": "^1.6.4",
+    "animate.css": "^4.1.1",
+    "axios": "^0.24.0",
+    "echarts": "^5.2.2",
+    "element-plus": "^1.2.0-beta.3",
+    "sass": "^1.43.4",
+    "typescript": "^4.5.2",
+    "vue": "^3.2.16"
+>>>>>>> 747ff841d65d59df20aea5de9992fcb1ae3305f8
   },
   "devDependencies": {
     "@types/node": "^16.11.11",
     "@vitejs/plugin-vue": "^1.9.3",
+<<<<<<< HEAD
     "typescript": "^4.5.5",
+=======
+>>>>>>> 747ff841d65d59df20aea5de9992fcb1ae3305f8
     "vite": "^2.6.4"
   }
 }
