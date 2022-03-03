@@ -20,15 +20,9 @@
 
 [css效果图收集](https://gitee.com/qm1989/css_effect_map_collection)
 
-<<<<<<< HEAD
 ## 📦 安装
 
 ```
-=======
-##  📦 安装
-
-```bash
->>>>>>> 747ff841d65d59df20aea5de9992fcb1ae3305f8
 npm install
 // or
 yarn
@@ -36,16 +30,8 @@ yarn
 
 ## 💨运行
 
-<<<<<<< HEAD
 ```
-=======
-```bash
->>>>>>> 747ff841d65d59df20aea5de9992fcb1ae3305f8
 npm run dev
 // or
 yarn dev
 ```
-<<<<<<< HEAD
-=======
-
->>>>>>> 747ff841d65d59df20aea5de9992fcb1ae3305f8

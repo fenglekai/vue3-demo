@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -16,19 +15,4 @@
         },
         "lib": ["es5", "dom", "es2015"]
     }
-=======
-{
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowJs": true,
-    "compilerOptions": {
-        "module": "es2020", // 解决import.meta报错
-        "moduleResolution": "node", // 解决node引用报错
-        "types": ["vite/client"], // 解决import.meta.globEager报错
-        "baseUrl": ".",
-        "paths": { // 别名配置
-            "@/*": ["*", "src/*"]
-        }
-    }
->>>>>>> 747ff841d65d59df20aea5de9992fcb1ae3305f8
 }
