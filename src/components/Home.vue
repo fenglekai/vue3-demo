@@ -157,15 +157,14 @@ export default defineComponent({
     const restaurants = ref();
     // 搜索
     function searchClick() {
-      let input3: string | any = document.querySelector(".input-3")?.className;
-      let input3Btn: string | any =
-        document.querySelector(".input3-btn")?.className;
-      if (input3.indexOf("inclicked") == -1) {
-        input3 = "input-3 inclicked";
-        input3Btn = "input3-btn close";
+      const input3: Element | any = document.querySelector(".input-3");
+      const input3Btn: Element | any = document.querySelector(".input3-btn");
+      if (input3.className.indexOf("inclicked") == -1) {
+        input3.className = "input-3 inclicked";
+        input3Btn.className = "input3-btn close";
       } else {
-        input3 = "input-3";
-        input3Btn = "input3-btn";
+        input3.className = "input-3";
+        input3Btn.className = "input3-btn";
       }
     }
     // 搜索提示
@@ -260,7 +259,8 @@ export default defineComponent({
     };
     // 页面挂载完成
     onMounted(() => {
-      document.querySelector(".input3-btn")?.addEventListener("click", () => {
+      const input3Btn: Element | any = document.querySelector(".input3-btn");
+      input3Btn.addEventListener("click", () => {
         searchClick();
       });
       getHitokoto();
